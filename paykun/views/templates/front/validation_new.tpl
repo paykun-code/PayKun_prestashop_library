@@ -1,5 +1,6 @@
+{extends file=$layout}
 
-
+{block name='content'}
 {capture name=path}
 	<a href="{$link->getPageLink('order', true, NULL, "step=3")|escape:'htmlall':'UTF-8'}" rel="nofollow" title="{l s='Go back to the Checkout' mod='Paykun'}">
 	{l s='Checkout' mod='Paykun'}
@@ -20,7 +21,7 @@
 
 <P>Selected Payment Method : <b>{$checkout_label}</b></p>
 
-<form action="{$link->getModuleLink('Paykun', 'validation', [], true)|escape:'htmlall':'UTF-8'}" method="post">
+<form action="{$pk_data['gateway_url']}" method="post">
 {if isset($showPhoneBox)}
 	<div style="padding:20px 0px;margin:20px 0;">
 		<label>Mobile No.</label>
@@ -35,12 +36,13 @@
 	<input type="hidden" name="access_token" value="{$pk_data['access_token']}" />
 
 	<p class="cart_navigation" id="cart_navigation">
-		<a href="{$link->getPageLink('order', true)}?step=3" class="button_large">{l s='Other payment methods' mod='Paykun'}</a>
+		<a href="{$link->getPageLink('order', true)}?step=3" class="button_large btn btn-info" style="color: #fff">{l s='Other payment methods' mod='Paykun'}</a>
 		{if $currency_code eq 'INR'}
-			<input type="submit" value="{l s='Confirm Order' mod='Paykun'}" class="exclusive_large" />
+			<input type="submit" value="{l s='Confirm Order' mod='Paykun'}" class="exclusive_large btn btn-info" />
 		{else}
 			<strong style="color: red">PayKun can only process INR currency right now.</strong>
 		{/if}
 	</p>
 {/if}
 </form>
+{/block}

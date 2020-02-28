@@ -129,11 +129,11 @@ class Payment {
                 ErrorCodes::INVALID_PURPOSE_CODE, null);
         }
 
-        if (\Paykun\Validator::VALIDATE_AMOUNT($amount)) {
+        /*if (\Paykun\Validator::VALIDATE_AMOUNT($amount)) {
 
             throw new ValidationException(ErrorCodes::INVALID_AMOUNT_STRING,
                 ErrorCodes::INVALID_AMOUNT_CODE, null);
-        }
+        }*/
 
         if (\Paykun\Validator::VALIDATE_URL($successUrl)) {
 

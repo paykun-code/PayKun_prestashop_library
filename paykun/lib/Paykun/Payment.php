@@ -49,7 +49,7 @@ class Payment {
     public $udf_4;
     public $udf_5;
     private $log;
-
+    private $currency = 'INR';
 
 
     /**
@@ -115,7 +115,7 @@ class Payment {
      */
 
 
-    public function initOrder ($orderId, $purpose, $amount, $successUrl, $failureUrl) {
+    public function initOrder ($orderId, $purpose, $amount, $successUrl, $failureUrl, $currency = 'INR') {
 
         if (\Paykun\Validator::VALIDATE_ORDER_NUMBER($orderId)) {
 
@@ -153,6 +153,7 @@ class Payment {
         $this->successUrl   = $successUrl;
         $this->failureUrl   = $failureUrl;
         $this->isPassedValidationForInitOrder = true;
+        $this->currency = $currency;
         return $this;
 
     }
@@ -282,7 +283,7 @@ class Payment {
             $dataArray['udf_3']             = $this->udf_3 ? $this->udf_3 : '';
             $dataArray['udf_4']             = $this->udf_4 ? $this->udf_4 : '';
             $dataArray['udf_5']             = $this->udf_5 ? $this->udf_5 : '';
-
+            $dataArray['currency']          = $this->currency;
             $encryptedData = $this->encryptData($dataArray);
             return $this->createForm($encryptedData);
         }

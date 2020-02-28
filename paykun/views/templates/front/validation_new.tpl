@@ -37,11 +37,12 @@
 
 	<p class="cart_navigation" id="cart_navigation">
 		<a href="{$link->getPageLink('order', true)}?step=3" class="button_large btn btn-info" style="color: #fff">{l s='Other payment methods' mod='Paykun'}</a>
-		{if $currency_code eq 'INR'}
+		<input type="submit" value="{l s='Confirm Order' mod='Paykun'}" class="exclusive_large btn btn-info" />
+		{*{if $currency_code eq 'INR'}
 			<input type="submit" value="{l s='Confirm Order' mod='Paykun'}" class="exclusive_large btn btn-info" />
 		{else}
 			<strong style="color: red">PayKun can only process INR currency right now.</strong>
-		{/if}
+		{/if}*}
 	</p>
 {/if}
 </form>

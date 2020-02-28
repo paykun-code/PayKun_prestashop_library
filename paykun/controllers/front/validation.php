@@ -153,7 +153,7 @@ class PaykunvalidationModuleFrontController extends ModuleFrontController
 
 		$obj = new \Paykun\Payment($pkData['merchant_id'], $pkData['access_token'], $pkData['enc_key'], $this->isLive, true);
 
-        $obj->initOrder($pkData['pkorderId'], $pkData['purpose'], $pkData['amount'], $pkData['success_url'], $pkData['failed_url']);
+        $obj->initOrder($pkData['pkorderId'], $pkData['purpose'], $pkData['amount'], $pkData['success_url'], $pkData['failed_url'], $currency_iso_code);
         $obj->addCustomer($pkData['name'],$pkData['email'],$pkData['mobile']);
 
         $obj->addBillingAddress('','','','','');

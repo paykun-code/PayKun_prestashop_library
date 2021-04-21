@@ -60,6 +60,15 @@ class paykun extends PaymentModule
 		$this->registerHook('displayPaymentEU');
 		$this->registerHook('paymentReturn');
 		Configuration::updateValue('paykun_checkout_label', 'Pay With PayKun');
+		if (is_not_17()){
+			$logsLocation = _PS_ROOT_DIR_ . "/log/pk.log";
+		}
+		else{
+			$logsLocation = _PS_ROOT_DIR_ . "/app/logs/pk.log";
+		}			
+		if (!file_exists($logsLocation)) {
+			mkdir($logsLocation, 0777, true);
+		}
 		return true;
 	}
 	
@@ -263,4 +272,9 @@ class paykun extends PaymentModule
 		 
 		return $helper->generateForm($fields_form);
 	}
+
+	private function is_not_17(){
+		return version_compare(_PS_VERSION_, '1.7', '<');
+	}
+	
 }

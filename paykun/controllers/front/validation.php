@@ -177,7 +177,8 @@ class PaykunvalidationModuleFrontController extends ModuleFrontController
 			$this->setTemplate('validation_old.tpl');
 		}
 		else{
-			$this->setTemplate('module:Paykun/views/templates/front/validation_new.tpl');
+			//$this->setTemplate('module:Paykun/views/templates/front/validation_new.tpl'); - Fails on Linux based installations as Module directory is paykun with a small 'p'
+            $this->setTemplate('module:paykun/views/templates/front/validation_new.tpl');
 		}
 		parent::initContent();
 	}
